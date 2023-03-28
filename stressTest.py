@@ -10,14 +10,28 @@ mydb = mysql.connector.connect(
   database="cad_imobiliarias"
 )
 
-# Creating a cursor object
+# Configurando o cursor do MySQL
 mycursor = mydb.cursor()
 
-# Executing a select statement on a specific table
-start_time = time.time()
-mycursor.execute("SELECT * FROM specific_table")
-end_time = time.time()
+# Definindo a consulta SQL a ser executada
+query = "SELECT * FROM cadastros"
 
-# Fetching the results and printing the time taken to execute the query
-result = mycursor.fetchall()
-print("Time taken to execute the query:", end_time - start_time, "seconds")
+# Configurando o número de iterações
+iterations = 1000
+
+# Iniciando o cronômetro
+start_time = time.time()
+
+# Executando a consulta SQL em um loop
+for i in range(iterations):
+    mycursor.execute(query)
+    result = mycursor.fetchall()
+
+# Parando o cronômetro
+stop_time = time.time()
+
+# Calculando o número de consultas por segundo
+queries_per_second = iterations / (stop_time - start_time)
+
+# Imprimindo o número de consultas por segundo
+print("Número de consultas por segundo:", queries_per_second)
