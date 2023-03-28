@@ -4,7 +4,7 @@ import time
 
 # define the MySQL connection settings
 mydb = mysql.connector.connect(
-  host="192.168.1.199",
+  host="category-app-mysql",
   user="root",
   password="root",
   database="cad_imobiliarias"
