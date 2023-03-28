@@ -1,9 +1,9 @@
 <?php
 // define the MySQL connection settings
-$servername = "localhost";
-$username = "yourusername";
-$password = "yourpassword";
-$dbname = "yourdatabase";
+$servername = "category-app-mysql";
+$username = "root";
+$password = "root";
+$dbname = "cad_imobiliarias";
 
 // create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
