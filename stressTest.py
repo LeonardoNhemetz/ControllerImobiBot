@@ -1,26 +1,23 @@
+# Importing the required libraries
 import mysql.connector
 import time
 
-# Conectar ao banco de dados
+# Establishing the connection with the remote MySQL server
 mydb = mysql.connector.connect(
-  host="172.19.0.1",
+  host="172.19.0.2",
   user="root",
   password="root",
   database="cad_imobiliarias"
 )
 
-# Creating a cursor object to execute SQL queries
+# Creating a cursor object
 mycursor = mydb.cursor()
 
-# Defining the SQL query to be executed
-sql = "SELECT * FROM cadastros"
+# Executing a select statement on a specific table
+start_time = time.time()
+mycursor.execute("SELECT * FROM specific_table")
+end_time = time.time()
 
-# Running the SQL query for 1000 times
-for i in range(1000):
-    mycursor.execute(sql)
-    result = mycursor.fetchall()
-    print(result)
-    time.sleep(0.1) # adding a delay of 0.1 seconds to simulate stress
-
-# Closing the database connection
-mydb.close()
+# Fetching the results and printing the time taken to execute the query
+result = mycursor.fetchall()
+print("Time taken to execute the query:", end_time - start_time, "seconds")
